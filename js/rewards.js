@@ -290,6 +290,12 @@
           case 'hours_50':
             unlocked = studyHours >= 50;
             break;
+          case 'mock_master':
+            unlocked = Array.isArray(data.mockTests) && data.mockTests.some(function (m) { return m.percentage >= 80; });
+            break;
+          case 'nature_lover':
+            unlocked = !!(data.environment && data.environment.season && data.environment.season !== 'auto');
+            break;
           default:
             unlocked = false;
         }

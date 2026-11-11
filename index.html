@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TCS 30-Day Preparation Tracker</title>
+  <title>TCS NQT 2027 • 30-Day Preparation Tracker</title>
   
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
@@ -21,15 +21,83 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
-  <!-- Mobile Header Bar -->
-  <header class="mobile-header" id="mobileHeader">
-    <div class="mobile-brand">
-      <img src="assets/favicon.svg" alt="TCS Prep Logo" class="brand-logo-img">
-      <span class="brand-title">TCS Prep</span>
+  <!-- Living Nature Environment Canvas (Z-Index: 0) -->
+  <canvas id="natureCanvas" aria-hidden="true"></canvas>
+
+  <!-- Top Global Navigation Bar -->
+  <header class="top-navbar" id="topNavbar">
+    <div class="top-nav-brand">
+      <a href="#dashboard" class="brand-link">
+        <div class="brand-logo-wrap">
+          <img src="assets/favicon.svg" alt="TCS Prep Logo" class="brand-logo-img">
+        </div>
+        <div class="brand-text-wrap">
+          <span class="brand-name">TCS NQT 2027</span>
+          <span class="brand-tag">30-Day Preparation Journey</span>
+        </div>
+      </a>
     </div>
-    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
-      <i data-lucide="menu"></i>
-    </button>
+
+    <!-- Center Navigation Links -->
+    <nav class="top-nav-links" id="topNavLinks">
+      <a href="#dashboard" class="top-nav-item active" data-page="dashboard">
+        <i data-lucide="layout-dashboard"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="#roadmap" class="top-nav-item" data-page="roadmap">
+        <i data-lucide="map"></i>
+        <span>30-Day Journey</span>
+      </a>
+      <a href="#practice" class="top-nav-item" data-page="practice">
+        <i data-lucide="book-open"></i>
+        <span>Practice Hub</span>
+      </a>
+      <a href="#coding" class="top-nav-item" data-page="coding">
+        <i data-lucide="code-2"></i>
+        <span>Coding Lab</span>
+      </a>
+      <a href="#mock" class="top-nav-item" data-page="mock">
+        <i data-lucide="timer"></i>
+        <span>Mock Tests</span>
+      </a>
+      <a href="#progress" class="top-nav-item" data-page="progress">
+        <i data-lucide="bar-chart-2"></i>
+        <span>Analytics</span>
+      </a>
+      <a href="#achievements" class="top-nav-item" data-page="achievements">
+        <i data-lucide="trophy"></i>
+        <span>Achievements</span>
+      </a>
+      <a href="#settings" class="top-nav-item" data-page="settings">
+        <i data-lucide="settings"></i>
+        <span>Settings</span>
+      </a>
+    </nav>
+
+    <!-- Top Right Quick Controls -->
+    <div class="top-nav-actions">
+      <!-- Active Day Indicator -->
+      <a href="#today" class="day-indicator-pill" id="navDayPill" title="Jump to today's study plan">
+        <i data-lucide="calendar"></i>
+        <span id="navDayText">Day 1 / 30</span>
+      </a>
+
+      <!-- Nature Soundscape Toggle Button -->
+      <button class="nav-control-btn" id="btnSoundToggle" title="Toggle natural ambient sound (OFF by default)" aria-label="Toggle ambient sound">
+        <i data-lucide="volume-x" id="soundIcon"></i>
+      </button>
+
+      <!-- Environment Quick Toggle Button -->
+      <button class="nav-control-btn" id="btnEnvToggle" title="Environment & Weather controls" aria-label="Open environment settings">
+        <i data-lucide="trees" id="envNavIcon"></i>
+        <span class="env-nav-label" id="envNavText">Spring</span>
+      </button>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
   </header>
 
   <!-- Main Application Wrapper -->
@@ -37,7 +105,7 @@
     <!-- Sidebar Backdrop for Mobile Overlay -->
     <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
-    <!-- Sidebar Navigation -->
+    <!-- Sidebar Navigation (Responsive Drawer on Mobile / Compact on Tablet) -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
         <a href="#dashboard" class="logo">
@@ -45,8 +113,8 @@
             <img src="assets/favicon.svg" alt="Logo" class="logo-svg">
           </div>
           <div class="logo-text-group">
-            <span class="logo-main">TCS Tracker</span>
-            <span class="logo-sub">30-Day NQT Prep</span>
+            <span class="logo-main">TCS NQT 2027</span>
+            <span class="logo-sub">Prep Tracker</span>
           </div>
         </a>
         <button class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar" title="Toggle sidebar">
@@ -61,15 +129,27 @@
         </a>
         <a href="#roadmap" class="nav-item" data-page="roadmap">
           <i data-lucide="map"></i>
-          <span class="nav-label">30-Day Roadmap</span>
+          <span class="nav-label">30-Day Journey</span>
         </a>
         <a href="#today" class="nav-item" data-page="today">
           <i data-lucide="calendar-check"></i>
-          <span class="nav-label">Today's Tasks</span>
+          <span class="nav-label">Today's Focus</span>
+        </a>
+        <a href="#practice" class="nav-item" data-page="practice">
+          <i data-lucide="book-open"></i>
+          <span class="nav-label">Practice Hub</span>
         </a>
         <a href="#coding" class="nav-item" data-page="coding">
           <i data-lucide="code-2"></i>
-          <span class="nav-label">Coding Tracker</span>
+          <span class="nav-label">Coding Lab</span>
+        </a>
+        <a href="#mock" class="nav-item" data-page="mock">
+          <i data-lucide="timer"></i>
+          <span class="nav-label">Mock Tests</span>
+        </a>
+        <a href="#progress" class="nav-item" data-page="progress">
+          <i data-lucide="bar-chart-2"></i>
+          <span class="nav-label">Analytics</span>
         </a>
         <a href="#achievements" class="nav-item" data-page="achievements">
           <i data-lucide="trophy"></i>
@@ -104,6 +184,94 @@
     </main>
   </div>
 
+  <!-- Floating Environment Controller Widget (Bottom-Right) -->
+  <div class="env-floating-widget" id="envFloatingWidget">
+    <button class="env-floating-pill" id="envFloatingPill" aria-expanded="false" title="Customize Living Nature Environment">
+      <i data-lucide="sparkles" class="pill-sparkle-icon"></i>
+      <span class="pill-text" id="floatingPillText">Living Nature: Spring</span>
+      <i data-lucide="chevron-up" class="pill-arrow-icon" id="floatingPillArrow"></i>
+    </button>
+
+    <!-- Expandable Glassmorphic Environment Drawer -->
+    <div class="env-control-panel card" id="envControlPanel" aria-hidden="true">
+      <div class="env-panel-header flex-between mb-md">
+        <div class="env-panel-title">
+          <i data-lucide="trees" class="icon-inline"></i>
+          <span>Living Nature Environment</span>
+        </div>
+        <button class="btn-close-panel" id="btnCloseEnvPanel" aria-label="Close environment settings">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <!-- Season / Environment Preset Selector -->
+      <div class="env-section mb-md">
+        <label class="env-label mb-xs">Environment & Season Preset</label>
+        <div class="season-preset-grid" id="seasonPresetGrid">
+          <button class="preset-btn active" data-season="auto"><i data-lucide="clock"></i> Auto (Time)</button>
+          <button class="preset-btn" data-season="spring"><i data-lucide="flower-2"></i> Spring</button>
+          <button class="preset-btn" data-season="summer"><i data-lucide="sun"></i> Summer</button>
+          <button class="preset-btn" data-season="monsoon"><i data-lucide="cloud-rain"></i> Monsoon</button>
+          <button class="preset-btn" data-season="autumn"><i data-lucide="wind"></i> Autumn</button>
+          <button class="preset-btn" data-season="winter"><i data-lucide="snowflake"></i> Winter</button>
+          <button class="preset-btn" data-season="mountain"><i data-lucide="mountain"></i> Mountain</button>
+          <button class="preset-btn" data-season="jungle"><i data-lucide="leaf"></i> Jungle</button>
+          <button class="preset-btn" data-season="night"><i data-lucide="moon"></i> Night Sky</button>
+        </div>
+      </div>
+
+      <!-- Weather Intensity -->
+      <div class="env-section mb-md">
+        <div class="flex-between mb-xs">
+          <label class="env-label">Weather & Particle Intensity</label>
+          <span class="text-xs text-muted" id="intensityText">Medium</span>
+        </div>
+        <div class="intensity-btn-group" id="intensityBtnGroup">
+          <button class="btn btn-sm btn-secondary intensity-btn" data-intensity="low">Subtle</button>
+          <button class="btn btn-sm btn-secondary intensity-btn active" data-intensity="medium">Balanced</button>
+          <button class="btn btn-sm btn-secondary intensity-btn" data-intensity="high">Vivid</button>
+        </div>
+      </div>
+
+      <!-- Audio Soundscape Controls -->
+      <div class="env-section mb-md">
+        <div class="flex-between mb-xs">
+          <label class="env-label"><i data-lucide="headphones" class="icon-inline"></i> Ambient Soundscape</label>
+          <button class="btn btn-xs btn-secondary" id="btnToggleAudioInside">
+            <span id="audioStatusText">OFF</span>
+          </button>
+        </div>
+        <div class="sound-volume-row flex-between gap-sm mt-xs">
+          <i data-lucide="volume-1" class="text-muted text-xs"></i>
+          <input type="range" min="0" max="100" value="35" class="slider" id="soundVolumeSlider" aria-label="Volume slider">
+          <i data-lucide="volume-2" class="text-muted text-xs"></i>
+        </div>
+        <div class="sound-type-selector mt-xs">
+          <select class="input select-sm" id="soundTypeSelect">
+            <option value="auto">Auto (Matches Season)</option>
+            <option value="rain">Gentle Rain & Patter</option>
+            <option value="breeze">Forest Breeze</option>
+            <option value="stream">Babbling Mountain Stream</option>
+            <option value="birds">Morning Birds</option>
+            <option value="crickets">Night Crickets</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Toggles: Animation & Reduced Motion -->
+      <div class="env-toggles-row flex-between pt-sm">
+        <label class="toggle-control-label">
+          <input type="checkbox" id="chkEnvAnimation" checked>
+          <span>Animate Background</span>
+        </label>
+        <label class="toggle-control-label">
+          <input type="checkbox" id="chkReducedMotion">
+          <span>Reduce Motion</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
   <!-- Modal Overlay -->
   <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
     <div class="modal" id="modal" role="dialog" aria-modal="true">
@@ -111,8 +279,8 @@
     </div>
   </div>
 
-  <!-- Confetti Canvas -->
-  <canvas id="confettiCanvas"></canvas>
+  <!-- Confetti Canvas for Achievements -->
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
 
   <!-- Toast Notification Container -->
   <div class="toast-container" id="toastContainer" aria-live="polite"></div>
@@ -120,8 +288,11 @@
   <!-- Application Scripts in dependency order -->
   <script src="js/data.js"></script>
   <script src="js/storage.js"></script>
+  <script src="js/soundscape.js"></script>
+  <script src="js/environment.js"></script>
   <script src="js/rewards.js"></script>
   <script src="js/tracker.js"></script>
+  <script src="js/mocktest.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

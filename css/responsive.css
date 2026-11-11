@@ -377,3 +377,164 @@
   }
 }
 
+
+/* ------------------------------------------------------------
+   6. Living Nature, Top Navbar, Settings & Grid Responsive Adaptations
+   ------------------------------------------------------------ */
+
+@media (max-width: 1200px) {
+  .brand-tag {
+    display: none;
+  }
+  .top-nav-item {
+    padding: 0.35rem 0.55rem;
+    font-size: 0.8rem;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .top-nav-links {
+    display: none !important;
+  }
+
+  .settings-top-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cbt-body-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .result-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .hero-content-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .hero-progress-ring-wrap {
+    align-self: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-navbar {
+    padding: 0 1rem;
+    height: 56px;
+  }
+
+  .brand-name {
+    font-size: 0.95rem;
+  }
+
+  .brand-tag {
+    display: none;
+  }
+
+  .day-indicator-pill {
+    padding: 0.25rem 0.55rem;
+    font-size: 0.72rem;
+  }
+
+  .env-nav-label {
+    display: none;
+  }
+
+  .env-floating-widget {
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .env-control-panel {
+    width: min(340px, calc(100vw - 32px));
+    right: 0;
+  }
+
+  .review-options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .milestone-bars-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+  }
+
+  .season-preset-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .theme-switch-group {
+    grid-template-columns: 1fr;
+  }
+
+  .mock-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   7. Desktop Clean Top-Nav & Mobile Slide-Out Drawer Rules
+   ------------------------------------------------------------ */
+
+@media (min-width: 993px) {
+  /* On desktop: use the sleek Top Navbar exclusively - hide redundant sidebar and mobile header */
+  .sidebar {
+    display: none !important;
+  }
+  .main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+    max-width: 1320px !important;
+  }
+  .mobile-menu-btn {
+    display: none !important;
+  }
+  .mobile-header {
+    display: none !important;
+  }
+  .top-nav-links {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .top-nav-links {
+    display: none !important;
+  }
+  .mobile-menu-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    cursor: pointer;
+  }
+  .sidebar {
+    display: flex !important;
+    transform: translateX(-100%) !important;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+  .sidebar.active,
+  .sidebar.open {
+    transform: translateX(0) !important;
+  }
+  .main-content {
+    margin-left: 0 !important;
+    padding: 1.25rem 1rem 4rem 1rem !important;
+  }
+}

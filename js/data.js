@@ -139,6 +139,7 @@ const STUDY_PLAN = [
     phase: 'foundation',
     phaseLabel: 'Foundation',
     title: 'Number System, Divisibility & Unit Digit',
+    learningObjectives: "Master prime numbers, divisibility rules for 2-13, unit digit cyclicity, and practice 20 foundational number questions.",
     tasks: [
       {
         id: 'd1_quant_lecture',
@@ -193,6 +194,7 @@ const STUDY_PLAN = [
     phase: 'foundation',
     phaseLabel: 'Foundation',
     title: 'Factors, Multiples, HCF & LCM',
+    learningObjectives: "Understand prime factorization, relationship between HCF and LCM, product formula, and Euclidean GCD algorithms.",
     tasks: [
       {
         id: 'd2_quant_lecture',
@@ -296,6 +298,7 @@ const STUDY_PLAN = [
     phase: 'foundation',
     phaseLabel: 'Foundation',
     title: 'Remainders, Cyclicity & Blood Relations',
+    learningObjectives: "Calculate remainders using Euler's theorem, Fermat's little theorem, cyclicity patterns, and solve blood relations family trees.",
     tasks: [
       {
         id: 'd3_quant_lecture',
@@ -399,6 +402,7 @@ const STUDY_PLAN = [
     phase: 'foundation',
     phaseLabel: 'Foundation',
     title: 'Percentage, Direction Sense & Array Coding',
+    learningObjectives: "Master percentage calculations, percentage change formulas, successive percentage increases, and array traversal logic.",
     tasks: [
       {
         id: 'd4_quant_lecture',
@@ -502,6 +506,7 @@ const STUDY_PLAN = [
     phase: 'foundation',
     phaseLabel: 'Foundation',
     title: 'Ratio & Proportion, Syllogisms & Array Manipulation',
+    learningObjectives: "Apply ratio & proportion concepts, duplicate/triplicate ratios, syllogism Venn diagrams, and array manipulation.",
     tasks: [
       {
         id: 'd5_quant_lecture',
@@ -605,6 +610,7 @@ const STUDY_PLAN = [
     phase: 'foundation',
     phaseLabel: 'Foundation',
     title: 'Average, Weighted Average & Array Frequency',
+    learningObjectives: "Solve average, weighted average, and replacement problems, plus frequency counts in arrays.",
     tasks: [
       {
         id: 'd6_quant_lecture',
@@ -708,6 +714,7 @@ const STUDY_PLAN = [
     phase: 'foundation',
     phaseLabel: 'Foundation',
     title: 'Profit & Loss, String Coding & Week 1 Mock',
+    learningObjectives: "Master cost price, selling price, profit/loss percentage, marked price, discounts, and Week 1 Mock test.",
     tasks: [
       {
         id: 'd7_quant_lecture',
@@ -793,6 +800,7 @@ const STUDY_PLAN = [
     phase: 'intermediate',
     phaseLabel: 'Intermediate',
     title: 'Revision & Timed Aptitude Checkpoint',
+    learningObjectives: "Conduct timed aptitude revision checkpoint, solidify error logs, and reattempt weak questions from Week 1.",
     tasks: [
       {
         id: 'd8_quant_lecture',
@@ -845,6 +853,7 @@ const STUDY_PLAN = [
     phase: 'intermediate',
     phaseLabel: 'Intermediate',
     title: 'Time & Work, Array Rotation & Stock Trading',
+    learningObjectives: "Solve Time and Work efficiency equations, unitary methods, and array rotation algorithms.",
     tasks: [
       {
         id: 'd9_quant_lecture',
@@ -938,6 +947,7 @@ const STUDY_PLAN = [
     phase: 'intermediate',
     phaseLabel: 'Intermediate',
     title: 'Pipes & Cisterns, Statement & Conclusion & Day 10 Audit',
+    learningObjectives: "Master Pipes and Cistern inlet/outlet calculations, negative work problems, and statement-conclusion deduction.",
     tasks: [
       {
         id: 'd10_quant_lecture',
@@ -1020,6 +1030,7 @@ const STUDY_PLAN = [
     phase: 'intermediate',
     phaseLabel: 'Intermediate',
     title: 'Time, Speed & Distance, Trains & Missing Number',
+    learningObjectives: "Understand Speed, Time and Distance formulas, relative speed, train crossing problems, and missing number detection.",
     tasks: [
       {
         id: 'd11_quant_lecture',
@@ -1103,6 +1114,7 @@ const STUDY_PLAN = [
     phase: 'intermediate',
     phaseLabel: 'Intermediate',
     title: 'Simple & Compound Interest & Coding Math',
+    learningObjectives: "Calculate Simple Interest and Compound Interest (annual & semi-annual compounding) with difference formulas.",
     tasks: [
       {
         id: 'd12_quant_lecture',
@@ -1187,6 +1199,7 @@ const STUDY_PLAN = [
     phase: 'intermediate',
     phaseLabel: 'Intermediate',
     title: 'Permutation & Combination & Triplet Algorithms',
+    learningObjectives: "Master Permutation and Combination formulas (nPr, nCr), circular arrangements, and three-sum triplet algorithms.",
     tasks: [
       {
         id: 'd13_quant_lecture',
@@ -1259,6 +1272,7 @@ const STUDY_PLAN = [
     phase: 'intermediate',
     phaseLabel: 'Intermediate',
     title: 'Probability & Full Intermediate Assessment',
+    learningObjectives: "Solve single and multi-event Probability problems, dice/cards problems, and complete intermediate milestone assessment.",
     tasks: [
       {
         id: 'd14_quant_lecture',
@@ -1334,6 +1348,7 @@ const STUDY_PLAN = [
     phase: 'advanced',
     phaseLabel: 'Advanced',
     title: 'Data Interpretation & Matrix Algorithms',
+    learningObjectives: "Interpret tables, bar charts, line graphs, and pie charts under timed conditions with matrix algorithms.",
     tasks: [
       {
         id: 'd15_quant_lecture',
@@ -1417,6 +1432,7 @@ const STUDY_PLAN = [
     phase: 'advanced',
     phaseLabel: 'Advanced',
     title: 'Series Reasoning & Array Mathematics',
+    learningObjectives: "Identify number series, difference series, alternate series patterns, and symbol reasoning.",
     tasks: [
       {
         id: 'd16_reasoning_lecture',
@@ -1490,6 +1506,7 @@ const STUDY_PLAN = [
     phase: 'advanced',
     phaseLabel: 'Advanced',
     title: 'Syllogism, Venn Diagrams & Array Logic',
+    learningObjectives: "Solve multi-statement Syllogisms with 'Some', 'All', 'No', and 'Possibility' Venn diagram analysis.",
     tasks: [
       {
         id: 'd17_reasoning_lecture',
@@ -1563,6 +1580,7 @@ const STUDY_PLAN = [
     phase: 'advanced',
     phaseLabel: 'Advanced',
     title: 'Alphabet Coding, String Anagrams & Palindromes',
+    learningObjectives: "Master letter coding, substitution cyphers, string anagram detection, and palindrome algorithms.",
     tasks: [
       {
         id: 'd18_reasoning_lecture',
@@ -1636,6 +1654,7 @@ const STUDY_PLAN = [
     phase: 'advanced',
     phaseLabel: 'Advanced',
     title: 'Direction Sense, Blood Relations & Matrix Logic',
+    learningObjectives: "Solve 8-point compass direction sense, shadow problems, multi-generation blood relations, and matrix rotation.",
     tasks: [
       {
         id: 'd19_reasoning_lecture',
@@ -1718,6 +1737,7 @@ const STUDY_PLAN = [
     phase: 'advanced',
     phaseLabel: 'Advanced',
     title: 'Kadane’s Algorithm, Sort 0-1-2 & Day 20 Checkpoint',
+    learningObjectives: "Implement Kadane's maximum subarray algorithm, Dutch National Flag sort 0-1-2, and Day 20 checkpoint.",
     tasks: [
       {
         id: 'd20_reasoning_lecture',
@@ -1791,6 +1811,7 @@ const STUDY_PLAN = [
     phase: 'advanced',
     phaseLabel: 'Advanced',
     title: 'Verbal Grammar, Error Spotting & Coding Review',
+    learningObjectives: "Master grammar rules for nouns, pronouns, verbs, subject-verb agreement, and spotting errors.",
     tasks: [
       {
         id: 'd21_verbal_lecture',
@@ -1855,6 +1876,7 @@ const STUDY_PLAN = [
     phase: 'final',
     phaseLabel: 'Final',
     title: 'Vocabulary, Synonyms, Antonyms & Quant Revision',
+    learningObjectives: "Expand vocabulary, master high-frequency TCS synonyms and antonyms, and revise quantitative shortcuts.",
     tasks: [
       {
         id: 'd22_verbal_lecture',
@@ -1917,6 +1939,7 @@ const STUDY_PLAN = [
     phase: 'final',
     phaseLabel: 'Final',
     title: 'Sentence Arrangement, Para Jumbles & Reasoning Drill',
+    learningObjectives: "Solve Para Jumbles, sentence reordering, mandatory pairs identification, and deductive reasoning drills.",
     tasks: [
       {
         id: 'd23_verbal_lecture',
@@ -1979,6 +2002,7 @@ const STUDY_PLAN = [
     phase: 'final',
     phaseLabel: 'Final',
     title: 'Reading Comprehension & Advanced Coding Mock',
+    learningObjectives: "Master Reading Comprehension passage skimming, central idea extraction, tone analysis, and coding mock.",
     tasks: [
       {
         id: 'd24_verbal_lecture',
@@ -2031,6 +2055,7 @@ const STUDY_PLAN = [
     phase: 'final',
     phaseLabel: 'Final',
     title: 'GFG String & Array Programming + Core Array Solves',
+    learningObjectives: "Solve core array and string manipulation problems on GeeksforGeeks, reviewing time complexity.",
     tasks: [
       {
         id: 'd25_coding_lecture',
@@ -2115,6 +2140,7 @@ const STUDY_PLAN = [
     phase: 'final',
     phaseLabel: 'Final',
     title: 'Array Rotations, Stock Buy/Sell & Kadane Algorithm',
+    learningObjectives: "Master two-pointer array techniques, stock buy and sell single-pass logic, and Kadane's algorithm.",
     tasks: [
       {
         id: 'd26_coding_lecture',
@@ -2188,6 +2214,7 @@ const STUDY_PLAN = [
     phase: 'final',
     phaseLabel: 'Final',
     title: 'Strings: Palindrome, Anagram, Atoi & GFG Programming',
+    learningObjectives: "Master string operations: Palindrome verification, Anagram checking, and string-to-integer (atoi) edge cases.",
     tasks: [
       {
         id: 'd27_coding_lecture_1',
@@ -2271,6 +2298,7 @@ const STUDY_PLAN = [
     phase: 'final',
     phaseLabel: 'Final',
     title: 'Number Theory, Matrix, C++ STL & Interview Prep',
+    learningObjectives: "Review Number Theory, Matrix traversal, C++ STL / Java Collections, and technical interview fundamentals.",
     tasks: [
       {
         id: 'd28_cs_lecture',
@@ -2344,6 +2372,7 @@ const STUDY_PLAN = [
     phase: 'final',
     phaseLabel: 'Final',
     title: 'Full-Length TCS Mock Assessment (Timed)',
+    learningObjectives: "Complete full-length 65-question TCS NQT Mock Test simulation under strict examination conditions.",
     tasks: [
       {
         id: 'd29_quant_mock',
@@ -2404,6 +2433,7 @@ const STUDY_PLAN = [
     phase: 'final',
     phaseLabel: 'Final',
     title: 'Final Revision, Error Correction & Exam Readiness',
+    learningObjectives: "Final error log review, formula revision, shortcut cheat-sheet recap, and exam mindset readiness.",
     tasks: [
       {
         id: 'd30_quant_revision',
@@ -2463,7 +2493,309 @@ const STUDY_PLAN = [
 // Achievements System
 // ============================================================
 
+
+// ============================================================
+// Practice Catalog (Categorized IndiaBIX Topics)
+// ============================================================
+const PRACTICE_CATALOG = [
+  {
+    category: 'quant',
+    categoryLabel: 'Numerical Ability',
+    topics: [
+      { id: 'p_numbers', name: 'Problems on Numbers', link: 'https://www.indiabix.com/aptitude/problems-on-numbers/', questionsCount: 20, timeEst: '45 mins', difficulty: 'Foundation' },
+      { id: 'p_num_sys', name: 'Numbers & Divisibility', link: 'https://www.indiabix.com/aptitude/numbers/', questionsCount: 15, timeEst: '35 mins', difficulty: 'Foundation' },
+      { id: 'p_pct', name: 'Percentage & Profit/Loss', link: 'https://www.indiabix.com/aptitude/percentage/', questionsCount: 20, timeEst: '40 mins', difficulty: 'Intermediate' },
+      { id: 'p_ratio', name: 'Ratio and Proportion', link: 'https://www.indiabix.com/aptitude/ratio-and-proportion/', questionsCount: 15, timeEst: '30 mins', difficulty: 'Intermediate' },
+      { id: 'p_avg', name: 'Average & Mixtures', link: 'https://www.indiabix.com/aptitude/average/', questionsCount: 15, timeEst: '30 mins', difficulty: 'Intermediate' },
+      { id: 'p_profit', name: 'Profit and Loss', link: 'https://www.indiabix.com/aptitude/profit-and-loss/', questionsCount: 20, timeEst: '45 mins', difficulty: 'Intermediate' },
+      { id: 'p_work', name: 'Time and Work', link: 'https://www.indiabix.com/aptitude/time-and-work/', questionsCount: 15, timeEst: '35 mins', difficulty: 'Advanced' },
+      { id: 'p_pipes', name: 'Pipes and Cistern', link: 'https://www.indiabix.com/aptitude/pipes-and-cistern/', questionsCount: 12, timeEst: '30 mins', difficulty: 'Advanced' },
+      { id: 'p_speed', name: 'Time, Speed and Distance', link: 'https://www.indiabix.com/aptitude/time-and-distance/', questionsCount: 15, timeEst: '40 mins', difficulty: 'Advanced' },
+      { id: 'p_trains', name: 'Problems on Trains', link: 'https://www.indiabix.com/aptitude/problems-on-trains/', questionsCount: 15, timeEst: '35 mins', difficulty: 'Intermediate' },
+      { id: 'p_si', name: 'Simple Interest', link: 'https://www.indiabix.com/aptitude/simple-interest/', questionsCount: 12, timeEst: '25 mins', difficulty: 'Intermediate' },
+      { id: 'p_ci', name: 'Compound Interest', link: 'https://www.indiabix.com/aptitude/compound-interest/', questionsCount: 12, timeEst: '30 mins', difficulty: 'Advanced' },
+      { id: 'p_pnc', name: 'Permutation & Combination', link: 'https://www.indiabix.com/aptitude/permutation-and-combination/', questionsCount: 15, timeEst: '40 mins', difficulty: 'Advanced' },
+      { id: 'p_prob', name: 'Probability', link: 'https://www.indiabix.com/aptitude/probability/', questionsCount: 15, timeEst: '35 mins', difficulty: 'Advanced' },
+      { id: 'p_di', name: 'Data Interpretation (Charts)', link: 'https://www.indiabix.com/data-interpretation/table-charts/', questionsCount: 20, timeEst: '45 mins', difficulty: 'Advanced' }
+    ]
+  },
+  {
+    category: 'reasoning',
+    categoryLabel: 'Reasoning Ability',
+    topics: [
+      { id: 'p_num_series', name: 'Number Series', link: 'https://www.indiabix.com/logical-reasoning/number-series/', questionsCount: 20, timeEst: '35 mins', difficulty: 'Foundation' },
+      { id: 'p_letter_series', name: 'Letter & Symbol Series', link: 'https://www.indiabix.com/logical-reasoning/letter-and-symbol-series/', questionsCount: 15, timeEst: '30 mins', difficulty: 'Foundation' },
+      { id: 'p_syllogism', name: 'Syllogism & Deductions', link: 'https://www.indiabix.com/verbal-reasoning/syllogism/', questionsCount: 20, timeEst: '45 mins', difficulty: 'Advanced' },
+      { id: 'p_blood', name: 'Blood Relations Test', link: 'https://www.indiabix.com/verbal-reasoning/blood-relation-test/', questionsCount: 15, timeEst: '35 mins', difficulty: 'Intermediate' },
+      { id: 'p_dir', name: 'Direction Sense Test', link: 'https://www.indiabix.com/verbal-reasoning/direction-sense-test/', questionsCount: 15, timeEst: '30 mins', difficulty: 'Intermediate' },
+      { id: 'p_seating', name: 'Seating Arrangement', link: 'https://www.indiabix.com/logical-reasoning/seating-arrangement/', questionsCount: 12, timeEst: '40 mins', difficulty: 'Advanced' }
+    ]
+  },
+  {
+    category: 'english',
+    categoryLabel: 'Verbal Ability',
+    topics: [
+      { id: 'p_errors', name: 'Spotting Errors', link: 'https://www.indiabix.com/verbal-ability/spotting-errors/', questionsCount: 25, timeEst: '35 mins', difficulty: 'Foundation' },
+      { id: 'p_sentence', name: 'Sentence Correction', link: 'https://www.indiabix.com/verbal-ability/sentence-correction/', questionsCount: 20, timeEst: '30 mins', difficulty: 'Intermediate' },
+      { id: 'p_jumbles', name: 'Ordering of Words / Para Jumbles', link: 'https://www.indiabix.com/verbal-ability/ordering-of-words/', questionsCount: 15, timeEst: '30 mins', difficulty: 'Intermediate' },
+      { id: 'p_comprehension', name: 'Reading Comprehension', link: 'https://www.indiabix.com/verbal-ability/comprehension/', questionsCount: 15, timeEst: '40 mins', difficulty: 'Advanced' },
+      { id: 'p_synonyms', name: 'Synonyms Vocabulary', link: 'https://www.indiabix.com/verbal-ability/synonyms/', questionsCount: 25, timeEst: '25 mins', difficulty: 'Foundation' },
+      { id: 'p_antonyms', name: 'Antonyms Vocabulary', link: 'https://www.indiabix.com/verbal-ability/antonyms/', questionsCount: 25, timeEst: '25 mins', difficulty: 'Foundation' },
+      { id: 'p_analogies', name: 'Verbal Analogies', link: 'https://www.indiabix.com/verbal-ability/verbal-analogies/', questionsCount: 20, timeEst: '25 mins', difficulty: 'Intermediate' },
+      { id: 'p_oneword', name: 'One Word Substitutes', link: 'https://www.indiabix.com/verbal-ability/one-word-substitutes/', questionsCount: 20, timeEst: '25 mins', difficulty: 'Foundation' }
+    ]
+  }
+];
+
+// ============================================================
+// Realistic TCS NQT Mock Test Question Banks
+// ============================================================
+const TCS_MOCK_TESTS = [
+  {
+    id: 'mock_quant_1',
+    title: 'Numerical Ability Sectional Mock',
+    category: 'quant',
+    categoryLabel: 'Numerical Ability',
+    durationMinutes: 25,
+    description: '15 High-frequency TCS NQT Quantitative questions covering Numbers, Percentages, Work, and Ratios.',
+    questions: [
+      {
+        id: 'mq1_1',
+        question: 'What is the unit digit of (7^95 - 3^58)?',
+        options: ['0', '4', '6', '7'],
+        correctAnswer: 1,
+        explanation: 'Cyclicity of 7 is 4: 95 % 4 = 3, so 7^3 ends in 3. Cyclicity of 3 is 4: 58 % 4 = 2, so 3^2 ends in 9. (13 - 9) = 4.'
+      },
+      {
+        id: 'mq1_2',
+        question: 'The HCF of two numbers is 11 and their LCM is 7700. If one of the numbers is 275, find the other number.',
+        options: ['279', '283', '308', '318'],
+        correctAnswer: 2,
+        explanation: 'Product of two numbers = HCF x LCM. Other number = (11 x 7700) / 275 = 308.'
+      },
+      {
+        id: 'mq1_3',
+        question: 'If the price of sugar increases by 25%, by what percent must a household decrease its consumption so as not to increase expenditure?',
+        options: ['15%', '20%', '25%', '30%'],
+        correctAnswer: 1,
+        explanation: 'Reduction % = [r / (100 + r)] x 100 = [25 / 125] x 100 = 20%.'
+      },
+      {
+        id: 'mq1_4',
+        question: 'A can do a piece of work in 12 days and B in 15 days. They work together for 5 days, and then B leaves. How many more days will A take to finish the remaining work?',
+        options: ['3 days', '4 days', '5 days', '6 days'],
+        correctAnswer: 0,
+        explanation: 'Total work = LCM(12, 15) = 60 units. A\'s rate = 5, B\'s rate = 4. 5 days together = 5 x 9 = 45 units. Remaining work = 15 units. A takes 15 / 5 = 3 days.'
+      },
+      {
+        id: 'mq1_5',
+        question: 'A train 150m long is running at 54 km/hr. How much time will it take to pass a telegraph post?',
+        options: ['8 sec', '10 sec', '12 sec', '15 sec'],
+        correctAnswer: 1,
+        explanation: 'Speed = 54 x (5/18) = 15 m/s. Time = Distance / Speed = 150 / 15 = 10 seconds.'
+      },
+      {
+        id: 'mq1_6',
+        question: 'In how many different ways can the letters of the word \'LEADING\' be arranged in such a way that the vowels always come together?',
+        options: ['360', '480', '720', '1440'],
+        correctAnswer: 2,
+        explanation: 'Vowels are E, A, I (3 vowels). Consonants are L, D, N, G (4 consonants). Treat (E, A, I) as 1 item. Total items = 4 + 1 = 5. Ways = 5! x 3! = 120 x 6 = 720.'
+      },
+      {
+        id: 'mq1_7',
+        question: 'A bag contains 6 black and 8 white balls. One ball is drawn at random. What is the probability that the ball drawn is white?',
+        options: ['3/7', '4/7', '1/8', '3/4'],
+        correctAnswer: 1,
+        explanation: 'Total balls = 6 + 8 = 14. P(white) = 8 / 14 = 4/7.'
+      },
+      {
+        id: 'mq1_8',
+        question: 'Find the simple interest on Rs. 8000 at 5% per annum for 3 years.',
+        options: ['Rs. 1000', 'Rs. 1200', 'Rs. 1400', 'Rs. 1500'],
+        correctAnswer: 1,
+        explanation: 'SI = (P x R x T) / 100 = (8000 x 5 x 3) / 100 = Rs. 1200.'
+      },
+      {
+        id: 'mq1_9',
+        question: 'The ratio of ages of two friends A and B is 3:5. After 5 years, the ratio becomes 2:3. What is the present age of A?',
+        options: ['15 years', '20 years', '25 years', '30 years'],
+        correctAnswer: 0,
+        explanation: 'Let ages be 3x and 5x. (3x + 5)/(5x + 5) = 2/3 => 9x + 15 = 10x + 10 => x = 5. Present age of A = 3 x 5 = 15 years.'
+      },
+      {
+        id: 'mq1_10',
+        question: 'Average of 5 numbers is 27. If one number is excluded, the average becomes 25. The excluded number is:',
+        options: ['30', '35', '40', '45'],
+        correctAnswer: 1,
+        explanation: 'Sum of 5 numbers = 5 x 27 = 135. Sum of remaining 4 numbers = 4 x 25 = 100. Excluded number = 135 - 100 = 35.'
+      }
+    ]
+  },
+  {
+    id: 'mock_reasoning_1',
+    title: 'Reasoning Ability Sectional Mock',
+    category: 'reasoning',
+    categoryLabel: 'Reasoning Ability',
+    durationMinutes: 25,
+    description: '15 High-yield TCS Reasoning problems: Syllogisms, Series, Blood Relations, and Direction Sense.',
+    questions: [
+      {
+        id: 'mr1_1',
+        question: 'Find the missing number in the series: 7, 14, 42, 168, 840, ?',
+        options: ['3360', '4200', '5040', '6720'],
+        correctAnswer: 2,
+        explanation: 'Pattern: x2, x3, x4, x5, x6. 840 x 6 = 5040.'
+      },
+      {
+        id: 'mr1_2',
+        question: 'If \'ROSE\' is coded as 6821, \'CHAIR\' is coded as 73456, and \'PREACH\' is coded as 961473, what is the code for \'SEARCH\'?',
+        options: ['214673', '214763', '246173', '216473'],
+        correctAnswer: 0,
+        explanation: 'Direct letter substitution: S=2, E=1, A=4, R=6, C=7, H=3 => 214673.'
+      },
+      {
+        id: 'mr1_3',
+        question: 'Pointing to a photograph of a boy, Suresh said, "He is the son of the only son of my mother." How is Suresh related to that boy?',
+        options: ['Brother', 'Uncle', 'Cousin', 'Father'],
+        correctAnswer: 3,
+        explanation: 'Mother\'s only son is Suresh himself. So the boy is the son of Suresh. Suresh is the father.'
+      },
+      {
+        id: 'mr1_4',
+        question: 'Statements: All mangoes are golden in color. No golden-colored things are cheap. Conclusions: 1. All mangoes are cheap. 2. Golden-colored mangoes are not cheap.',
+        options: ['Only conclusion 1 follows', 'Only conclusion 2 follows', 'Either 1 or 2 follows', 'Neither follows'],
+        correctAnswer: 1,
+        explanation: 'Since all mangoes are golden and golden things are not cheap, golden mangoes cannot be cheap. Conclusion 2 directly follows.'
+      },
+      {
+        id: 'mr1_5',
+        question: 'A man walks 5 km toward South and then turns to the right. After walking 3 km he turns to the left and walks 5 km. Now in which direction is he from the starting place?',
+        options: ['West', 'South', 'North-East', 'South-West'],
+        correctAnswer: 3,
+        explanation: 'Starting at (0,0), walks South to (0,-5), turns right (West) to (-3,-5), turns left (South) to (-3,-10). Position (-3,-10) is South-West of origin.'
+      },
+      {
+        id: 'mr1_6',
+        question: 'In a certain code, \'MONKEY\' is written as \'XDJMNL\'. How is \'TIGER\' written in that code?',
+        options: ['SHFDQ', 'HFDSQ', 'QDFHS', 'SDFHS'],
+        correctAnswer: 2,
+        explanation: 'Each letter is shifted by -1 and the word is reversed. T->S, I->H, G->F, E->D, R->Q reversed gives QDFHS.'
+      },
+      {
+        id: 'mr1_7',
+        question: 'Which word does NOT belong with the others?',
+        options: ['Inch', 'Ounce', 'Centimeter', 'Yard'],
+        correctAnswer: 1,
+        explanation: 'Inch, Centimeter, and Yard are units of distance/length. Ounce is a unit of weight/mass.'
+      },
+      {
+        id: 'mr1_8',
+        question: 'Statements: Some cats are dogs. Some dogs are stones. Conclusions: 1. Some cats are stones. 2. No cat is stone.',
+        options: ['Only 1 follows', 'Only 2 follows', 'Either 1 or 2 follows', 'Neither 1 nor 2 follows'],
+        correctAnswer: 2,
+        explanation: 'Both statements are particular affirmative (I-type). Conclusions form a complementary pair ("Some" and "No"), so either 1 or 2 follows.'
+      },
+      {
+        id: 'mr1_9',
+        question: 'Find the odd one out: 3, 5, 11, 14, 17, 21',
+        options: ['14', '17', '21', '11'],
+        correctAnswer: 0,
+        explanation: 'All other numbers are odd; 14 is the only even number.'
+      },
+      {
+        id: 'mr1_10',
+        question: 'Looking at a clock, the time is 3:30. What is the angle between the hour and minute hands?',
+        options: ['70 degrees', '75 degrees', '80 degrees', '90 degrees'],
+        correctAnswer: 1,
+        explanation: 'Angle = |30H - 5.5M| = |30(3) - 5.5(30)| = |90 - 165| = 75 degrees.'
+      }
+    ]
+  },
+  {
+    id: 'mock_verbal_1',
+    title: 'Verbal Ability Sectional Mock',
+    category: 'english',
+    categoryLabel: 'Verbal Ability',
+    durationMinutes: 20,
+    description: '15 TCS NQT Verbal questions: Spotting Errors, Vocabulary, Reading Comprehension, and Sentence Rearrangement.',
+    questions: [
+      {
+        id: 'mv1_1',
+        question: 'Find the part with an error: "Neither of the two candidates (A) / were eligible (B) / for the technical post (C) / No error (D)"',
+        options: ['A', 'B', 'C', 'D'],
+        correctAnswer: 1,
+        explanation: '\'Neither\' is singular and requires a singular verb. It should be \'was eligible\'.'
+      },
+      {
+        id: 'mv1_2',
+        question: 'Select the synonym of \'CANDID\':',
+        options: ['Secretive', 'Frank', 'Deceitful', 'Hesitant'],
+        correctAnswer: 1,
+        explanation: '\'Candid\' means truthful and straightforward; frank.'
+      },
+      {
+        id: 'mv1_3',
+        question: 'Select the antonym of \'DILIGENT\':',
+        options: ['Hardworking', 'Careful', 'Lazy', 'Persistent'],
+        correctAnswer: 2,
+        explanation: '\'Diligent\' means showing care and conscientiousness. Its antonym is \'Lazy\' or \'Careless\'.'
+      },
+      {
+        id: 'mv1_4',
+        question: 'Fill in the blank: The manager was annoyed _____ the subordinate\'s recurring negligence.',
+        options: ['at', 'with', 'on', 'about'],
+        correctAnswer: 0,
+        explanation: 'One is annoyed \'with\' a person, but annoyed \'at\' a person\'s behavior or negligence.'
+      },
+      {
+        id: 'mv1_5',
+        question: 'Rearrange the parts: P: to protect our planet / Q: we must reduce pollution / R: for future generations / S: by using renewable energy',
+        options: ['QSPR', 'PQRS', 'QSRP', 'SQPR'],
+        correctAnswer: 0,
+        explanation: 'Logical sentence flow: "We must reduce pollution (Q) by using renewable energy (S) to protect our planet (P) for future generations (R)".'
+      },
+      {
+        id: 'mv1_6',
+        question: 'Identify the word with the correct spelling:',
+        options: ['Accomodate', 'Accommodate', 'Acommodate', 'Accomadate'],
+        correctAnswer: 1,
+        explanation: 'Correct spelling is \'Accommodate\' (double c, double m).'
+      },
+      {
+        id: 'mv1_7',
+        question: 'A person who hates or distrusts mankind is called a:',
+        options: ['Philanthropist', 'Misanthrope', 'Misogynist', 'Cannibal'],
+        correctAnswer: 1,
+        explanation: 'A \'Misanthrope\' is someone who dislikes humankind and avoids human society.'
+      },
+      {
+        id: 'mv1_8',
+        question: 'Choose the correct idiom meaning: "To beat around the bush"',
+        options: ['To search for lost items', 'To speak directly and harshly', 'To avoid talking about what is important', 'To plant trees in a circle'],
+        correctAnswer: 2,
+        explanation: '\'To beat around the bush\' means to discuss a matter without coming to the point.'
+      },
+      {
+        id: 'mv1_9',
+        question: 'Select the correct passive voice: "The chef cooked a delicious meal."',
+        options: ['A delicious meal is cooked by the chef.', 'A delicious meal was cooked by the chef.', 'A delicious meal has been cooked by the chef.', 'A delicious meal had been cooked by the chef.'],
+        correctAnswer: 1,
+        explanation: 'Simple past tense passive form: was/were + past participle (cooked).'
+      },
+      {
+        id: 'mv1_10',
+        question: 'Complete the sentence: If he had studied diligently, he _____ the TCS assessment.',
+        options: ['would clear', 'will clear', 'would have cleared', 'clears'],
+        correctAnswer: 2,
+        explanation: 'Third conditional structure: \'If + past perfect, ... would have + past participle\'.'
+      }
+    ]
+  }
+];
+
 const ACHIEVEMENTS = [
+  { id: 'mock_master', title: 'Mock Test Master', description: 'Score 80%+ on any TCS NQT Mock Test', icon: 'award', xp: 150, condition: 'mock_master' },
+  { id: 'nature_lover', title: 'Nature Scholar', description: 'Experience the dynamic living nature environment', icon: 'trees', xp: 50, condition: 'nature_lover' },
   { id: 'first_task', title: 'First Step', description: 'Complete your first task', icon: 'footprints', xp: 10, condition: 'first_task' },
   { id: 'day_complete', title: 'Day Crusher', description: 'Complete all tasks in a day', icon: 'check-circle', xp: 50, condition: 'day_complete' },
   { id: 'week1', title: 'Week Warrior', description: 'Complete Week 1', icon: 'shield', xp: 150, condition: 'week_complete_1' },
@@ -2490,6 +2822,8 @@ if (typeof window !== 'undefined') {
   window.MOTIVATIONAL_QUOTES = MOTIVATIONAL_QUOTES;
   window.STUDY_PLAN = STUDY_PLAN;
   window.ACHIEVEMENTS = ACHIEVEMENTS;
+  window.PRACTICE_CATALOG = PRACTICE_CATALOG;
+  window.TCS_MOCK_TESTS = TCS_MOCK_TESTS;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
@@ -2500,6 +2834,8 @@ if (typeof module !== 'undefined' && module.exports) {
     NUMBER_SYSTEM_20_QUESTIONS: NUMBER_SYSTEM_20_QUESTIONS,
     MOTIVATIONAL_QUOTES: MOTIVATIONAL_QUOTES,
     STUDY_PLAN: STUDY_PLAN,
-    ACHIEVEMENTS: ACHIEVEMENTS
+    ACHIEVEMENTS: ACHIEVEMENTS,
+    PRACTICE_CATALOG: PRACTICE_CATALOG,
+    TCS_MOCK_TESTS: TCS_MOCK_TESTS
   };
 }

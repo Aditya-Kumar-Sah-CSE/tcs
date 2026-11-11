@@ -1,6 +1,7 @@
 /**
  * Storage Manager for TCS 30-Day Preparation Tracker
  * Handles localStorage persistence, data migration, import, and export.
+ * Supports Environment preferences, Mock Tests, Practice stats, and Revisions.
  */
 
 (function () {
@@ -11,6 +12,7 @@
   var DEFAULT_STATE = {
     tasks: {},
     notes: {},
+    revisions: {},
     xp: 0,
     earnedAchievements: [],
     streak: {
@@ -23,7 +25,18 @@
     theme: 'dark',
     dailyTarget: 6,
     codingProblems: [],
-    xpLog: []
+    xpLog: [],
+    environment: {
+      season: 'auto',       // auto | spring | summer | monsoon | autumn | winter | mountain | jungle | night
+      intensity: 'medium',  // low | medium | high
+      animation: true,
+      sound: false,
+      soundVolume: 0.35,
+      soundType: 'auto',    // auto | rain | breeze | stream | birds | crickets
+      reducedMotion: false
+    },
+    mockTests: [],
+    practiceStats: {}
   };
 
   /**
@@ -48,6 +61,9 @@
     }
     if (data.notes && typeof data.notes === 'object' && !Array.isArray(data.notes)) {
       result.notes = data.notes;
+    }
+    if (data.revisions && typeof data.revisions === 'object' && !Array.isArray(data.revisions)) {
+      result.revisions = data.revisions;
     }
     if (typeof data.xp === 'number' && !isNaN(data.xp)) {
       result.xp = Math.max(0, data.xp);
@@ -77,6 +93,27 @@
     }
     if (Array.isArray(data.xpLog)) {
       result.xpLog = data.xpLog;
+    }
+
+    // Environment settings
+    if (data.environment && typeof data.environment === 'object') {
+      result.environment.season = typeof data.environment.season === 'string' ? data.environment.season : DEFAULT_STATE.environment.season;
+      result.environment.intensity = typeof data.environment.intensity === 'string' ? data.environment.intensity : DEFAULT_STATE.environment.intensity;
+      result.environment.animation = typeof data.environment.animation === 'boolean' ? data.environment.animation : true;
+      result.environment.sound = typeof data.environment.sound === 'boolean' ? data.environment.sound : false;
+      result.environment.soundVolume = typeof data.environment.soundVolume === 'number' ? Math.min(1, Math.max(0, data.environment.soundVolume)) : 0.35;
+      result.environment.soundType = typeof data.environment.soundType === 'string' ? data.environment.soundType : 'auto';
+      result.environment.reducedMotion = typeof data.environment.reducedMotion === 'boolean' ? data.environment.reducedMotion : false;
+    }
+
+    // Mock tests history
+    if (Array.isArray(data.mockTests)) {
+      result.mockTests = data.mockTests;
+    }
+
+    // Practice stats
+    if (data.practiceStats && typeof data.practiceStats === 'object') {
+      result.practiceStats = data.practiceStats;
     }
 
     return result;
