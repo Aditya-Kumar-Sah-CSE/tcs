@@ -1,0 +1,378 @@
+/* ============================================================
+   TCS Prep Tracker – Responsive Design Stylesheet
+   Mobile-first adaptions, tablet layouts, and touch optimizations
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. Large Tablets & Small Laptops (max-width: 1200px)
+   ------------------------------------------------------------ */
+@media (max-width: 1200px) {
+  .dashboard-top-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .roadmap-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+/* ------------------------------------------------------------
+   2. Tablets & iPads (max-width: 1024px)
+   ------------------------------------------------------------ */
+@media (max-width: 1024px) {
+  :root {
+    --sidebar-width: 240px;
+  }
+
+  .main-content {
+    padding: var(--space-lg);
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  .circular-progress-wrap {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-md);
+  }
+
+  .achievements-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+
+  .day-detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .day-detail-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+/* ------------------------------------------------------------
+   3. Mobile Devices & Small Tablets (max-width: 768px)
+   ------------------------------------------------------------ */
+@media (max-width: 768px) {
+  /* Show Mobile Header */
+  .mobile-header {
+    display: flex !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    padding: 0 var(--space-md);
+    align-items: center;
+    justify-content: space-between;
+    z-index: 900;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .mobile-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .brand-logo-img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .brand-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    background: linear-gradient(135deg, #6c5ce7 0%, #00cec9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .mobile-menu-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-fast);
+  }
+
+  .mobile-menu-btn:hover,
+  .mobile-menu-btn:active {
+    background: var(--input-bg);
+    border-color: var(--accent);
+  }
+
+  /* App Layout Adjustment */
+  .app {
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* Main Content Padding to account for fixed mobile header */
+  .main-content {
+    margin-left: 0 !important;
+    padding: calc(60px + var(--space-md)) var(--space-md) var(--space-xl) var(--space-md);
+    width: 100% !important;
+  }
+
+  /* Sidebar as Drawer Overlay */
+  .sidebar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px !important;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5);
+    background: var(--bg-secondary);
+  }
+
+  .sidebar.open {
+    transform: translateX(0) !important;
+  }
+
+  .sidebar-toggle {
+    display: block !important;
+  }
+
+  /* Backdrop */
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .sidebar-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Stats Grid */
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  .stat-card {
+    padding: var(--space-md);
+  }
+
+  /* Roadmap Cards */
+  .roadmap-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Day View Header */
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .page-header .header-actions {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .page-header .header-actions .btn {
+    flex: 1;
+    min-width: 120px;
+    justify-content: center;
+  }
+
+  /* Task Item Touch Target */
+  .task-item {
+    padding: var(--space-md);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .task-left {
+    width: 100%;
+  }
+
+  .task-right {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    padding-top: var(--space-xs);
+  }
+
+  .task-link {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Modal Fullscreen or Bottom Sheet on Mobile */
+  .modal-overlay {
+    padding: var(--space-sm);
+    align-items: flex-end;
+  }
+
+  .modal {
+    max-width: 100% !important;
+    width: 100% !important;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: var(--space-md);
+  }
+
+  /* Tables Scrollable */
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    display: block;
+  }
+
+  .coding-table {
+    min-width: 580px;
+  }
+
+  /* Daily Dots Grid */
+  .daily-status-grid {
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 6px !important;
+  }
+
+  /* Achievements Grid */
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Weekly Progress Bars */
+  .weekly-progress-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-md) !important;
+  }
+
+  /* Settings Page */
+  .settings-section {
+    padding: var(--space-md);
+  }
+
+  .settings-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .settings-row .btn,
+  .settings-row .theme-toggle-btn {
+    width: 100%;
+  }
+
+  /* Toast notification on mobile */
+  .toast-container {
+    left: var(--space-md);
+    right: var(--space-md);
+    bottom: var(--space-md);
+  }
+
+  .toast {
+    max-width: 100%;
+  }
+}
+
+/* ------------------------------------------------------------
+   4. Small Mobile Devices (max-width: 480px)
+   ------------------------------------------------------------ */
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.35rem;
+  }
+
+  .page-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .daily-status-grid {
+    grid-template-columns: repeat(5, 1fr) !important;
+  }
+
+  .circular-progress-wrap {
+    padding: var(--space-md);
+  }
+
+  .progress-ring-container {
+    width: 140px;
+    height: 140px;
+  }
+
+  .progress-ring-container svg {
+    width: 140px;
+    height: 140px;
+  }
+
+  .progress-center-text .progress-percentage {
+    font-size: 1.6rem;
+  }
+
+  .btn {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+}
+
+/* ------------------------------------------------------------
+   5. Accessibility & Touch Preferences
+   ------------------------------------------------------------ */
+@media (hover: none) and (pointer: coarse) {
+  /* Increase clickable area on touch devices */
+  .nav-item {
+    min-height: 48px;
+  }
+
+  .task-checkbox-custom {
+    min-width: 26px;
+    min-height: 26px;
+  }
+
+  .btn {
+    min-height: 44px;
+  }
+}

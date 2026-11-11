@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TCS 30-Day Preparation Tracker</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+  <!-- Mobile Header Bar -->
+  <header class="mobile-header" id="mobileHeader">
+    <div class="mobile-brand">
+      <img src="assets/favicon.svg" alt="TCS Prep Logo" class="brand-logo-img">
+      <span class="brand-title">TCS Prep</span>
+    </div>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+      <i data-lucide="menu"></i>
+    </button>
+  </header>
+
+  <!-- Main Application Wrapper -->
+  <div class="app">
+    <!-- Sidebar Backdrop for Mobile Overlay -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="#dashboard" class="logo">
+          <div class="logo-icon-wrap">
+            <img src="assets/favicon.svg" alt="Logo" class="logo-svg">
+          </div>
+          <div class="logo-text-group">
+            <span class="logo-main">TCS Tracker</span>
+            <span class="logo-sub">30-Day NQT Prep</span>
+          </div>
+        </a>
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Collapse sidebar" title="Toggle sidebar">
+          <i data-lucide="chevron-left" class="toggle-icon"></i>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav" id="sidebarNav">
+        <a href="#dashboard" class="nav-item active" data-page="dashboard">
+          <i data-lucide="layout-dashboard"></i>
+          <span class="nav-label">Dashboard</span>
+        </a>
+        <a href="#roadmap" class="nav-item" data-page="roadmap">
+          <i data-lucide="map"></i>
+          <span class="nav-label">30-Day Roadmap</span>
+        </a>
+        <a href="#today" class="nav-item" data-page="today">
+          <i data-lucide="calendar-check"></i>
+          <span class="nav-label">Today's Tasks</span>
+        </a>
+        <a href="#coding" class="nav-item" data-page="coding">
+          <i data-lucide="code-2"></i>
+          <span class="nav-label">Coding Tracker</span>
+        </a>
+        <a href="#achievements" class="nav-item" data-page="achievements">
+          <i data-lucide="trophy"></i>
+          <span class="nav-label">Achievements</span>
+        </a>
+        <a href="#settings" class="nav-item" data-page="settings">
+          <i data-lucide="settings"></i>
+          <span class="nav-label">Settings</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Level & XP Progress Card -->
+      <div class="sidebar-footer" id="sidebarFooter">
+        <div class="user-level-card">
+          <div class="level-badge-header">
+            <div class="level-meta">
+              <span class="level-title-badge" id="sidebarLevelTitle">Beginner</span>
+              <span class="level-number-badge" id="sidebarLevelNum">Lvl 1</span>
+            </div>
+            <div class="level-xp-text" id="sidebarXPText">0 / 200 XP</div>
+          </div>
+          <div class="progress-bar mini-bar">
+            <div class="progress-fill" id="sidebarXPBar" style="width: 0%;"></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content" id="mainContent">
+      <!-- Dynamic views rendered by app.js -->
+    </main>
+  </div>
+
+  <!-- Modal Overlay -->
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <div class="modal" id="modal" role="dialog" aria-modal="true">
+      <!-- Content populated dynamically -->
+    </div>
+  </div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Application Scripts in dependency order -->
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/rewards.js"></script>
+  <script src="js/tracker.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

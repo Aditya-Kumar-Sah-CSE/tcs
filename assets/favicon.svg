@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6c5ce7"/>
+      <stop offset="50%" stop-color="#8c7ae6"/>
+      <stop offset="100%" stop-color="#00cec9"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  <!-- Background Rounded Squircle -->
+  <rect x="4" y="4" width="56" height="56" rx="16" fill="#0f0f17" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" />
+  <!-- Inner Glow Accent -->
+  <rect x="5" y="5" width="54" height="54" rx="15" fill="none" stroke="url(#primaryGrad)" stroke-width="1.5" opacity="0.6" />
+  
+  <!-- Stylized "T" / Graduation / Success Emblem -->
+  <path d="M18 20 C18 17.79 19.79 16 22 16 L42 16 C44.21 16 46 17.79 46 20 C46 22.21 44.21 24 42 24 L36 24 L36 44 C36 46.21 34.21 48 32 48 C29.79 48 28 46.21 28 44 L28 24 L22 24 C19.79 24 18 22.21 18 20 Z" 
+        fill="url(#primaryGrad)" 
+        filter="url(#glow)"/>
+        
+  <!-- Sparkle Accent Dot -->
+  <circle cx="44" cy="18" r="3" fill="#00cec9" />
+</svg>
