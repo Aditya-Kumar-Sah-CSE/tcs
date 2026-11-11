@@ -506,7 +506,7 @@
       }
       html += '          <div class="next-task-actions mt-md">';
       if (nTask.link) {
-        html += '            <a href="' + escapeHtml(nTask.link) + '" target="_blank" rel="noopener" class="btn btn-primary btn-sm">';
+        html += '            <a href="' + escapeHtml(nTask.link) + '" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">';
         html += '              <i data-lucide="external-link"></i> Open Material';
         html += '            </a>';
       }
@@ -841,7 +841,13 @@
       html += '          <div class="task-title-row">';
       html += '            <span class="task-title">' + escapeHtml(task.title) + '</span>';
       html += '            <span class="task-category ' + task.category + '">' + task.category + '</span>';
-      if (task.target) {
+      if (task.difficulty) {
+        html += '            <span class="difficulty-badge ' + task.difficulty.toLowerCase() + '">' + task.difficulty + '</span>';
+      }
+      if (task.duration) {
+        html += '            <span class="task-target-pill"><i data-lucide="clock" class="icon-inline"></i> ' + task.duration + '</span>';
+      }
+      if (task.target && !task.difficulty) {
         html += '            <span class="task-target-pill">' + task.target + ' ' + (task.category === 'coding' ? 'Problems' : 'Questions') + '</span>';
       }
       html += '          </div>';
@@ -856,20 +862,20 @@
         var linkLabel = 'Open Resource';
         var linkIcon = 'external-link';
         if (task.type === 'lecture') {
-          linkLabel = 'Watch Lecture';
-          linkIcon = 'video';
+          linkLabel = 'Watch Video';
+          linkIcon = 'play-circle';
         } else if (task.type === 'practice') {
-          linkLabel = 'Practice Now';
+          linkLabel = task.difficulty ? 'Solve Question' : 'Practice Topic';
           linkIcon = 'file-text';
         } else if (task.type === 'coding') {
-          linkLabel = 'Solve Problems';
+          linkLabel = 'Solve on GFG';
           linkIcon = 'code-2';
         } else if (task.type === 'mock') {
           linkLabel = 'Start Mock';
           linkIcon = 'play';
         }
 
-        html += '          <a href="' + escapeHtml(task.link) + '" target="_blank" rel="noopener" class="task-link">';
+        html += '          <a href="' + escapeHtml(task.link) + '" target="_blank" rel="noopener noreferrer" class="task-link" data-url="' + escapeHtml(task.link) + '">';
         html += '            <i data-lucide="' + linkIcon + '"></i> ' + linkLabel;
         html += '          </a>';
       }
@@ -1424,6 +1430,13 @@
 
     // Main Content Click Delegation
     elements.mainContent.addEventListener('click', function (e) {
+      // Allow external links (YouTube, IndiaBix, GFG) to open directly in default browser (Brave)
+      var extLink = e.target.closest('a[target="_blank"]');
+      if (extLink) {
+        e.stopPropagation();
+        return;
+      }
+
       // 1. Task Checkbox Click
       var checkbox = e.target.closest('.task-checkbox');
       if (checkbox) {
@@ -1742,3 +1755,4 @@
     showToast: showToast
   };
 })();
+

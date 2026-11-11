@@ -8,12 +8,11 @@ Built with pure vanilla web technologies: **HTML5, CSS3, and Vanilla JavaScript*
 
 ## ✨ Features
 
-- **30-Day Curated Curriculum**: Predefined daily study plan covering:
-  - Quantitative Aptitude (Knowledge Gate playlist lectures + IndiaBix/PrepInsta practice)
-  - Logical Reasoning (Number series, syllogisms, blood relations, seating arrangements, etc.)
-  - Verbal Ability (Grammar, articles, prepositions, reading comprehension, cloze test)
-  - Coding & DSA (Arrays, Strings, Hashing, Two Pointers, Trees, Graphs, DP on LeetCode/TakeUForward)
-  - Mock Tests & CS Fundamentals (DBMS, SQL, Operating Systems, Computer Networks, OOPs, C++ STL)
+- **30-Day Curated Curriculum with Verified Direct Links**:
+  - **Direct YouTube Video Lessons**: Exact video links (`https://www.youtube.com/watch?v=...`) directly to Yash Jain Sir (Knowledge Gate) & GeeksforGeeks masterclasses (no generic playlist links).
+  - **Question-Wise IndiaBix Practice**: Detailed question-by-question breakdown with individual checkboxes, difficulty badges (Easy / Medium / Hard), and direct question links (`https://www.indiabix.com/aptitude/problems-on-numbers/001001` - `001020`).
+  - **GeeksforGeeks Problem Solves**: Direct problem links for all daily coding tasks (GCD, Prime, LCM, Fibonacci, Sum of Array, Largest Element, Reverse Array, Second Largest, Kadane's, Anagrams, etc.).
+  - **System Default Browser (Brave) Integration**: External links open with `target="_blank" rel="noopener noreferrer"`, routing directly to your preferred browser.
 - **Linear & Notion Inspired UI**:
   - Glassmorphism dark theme by default with high-contrast accent colors
   - Optional clean light mode with persistent toggle
@@ -140,3 +139,4 @@ tcs/
 ## 📄 License
 
 This project is created for personal preparation and educational purposes. Free to use and customize!
+
