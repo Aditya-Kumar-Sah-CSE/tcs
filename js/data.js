@@ -617,3 +617,22 @@ const ACHIEVEMENTS = [
   { id: 'hours_10', title: 'Dedicated', description: 'Study 10+ hours', icon: 'clock', xp: 50, condition: 'hours_10' },
   { id: 'hours_50', title: 'Scholar', description: 'Study 50+ hours', icon: 'book-open', xp: 150, condition: 'hours_50' }
 ];
+
+// Attach to window object for global browser access across modules
+if (typeof window !== 'undefined') {
+  window.PLAYLISTS = PLAYLISTS;
+  window.PRACTICE_LINKS = PRACTICE_LINKS;
+  window.MOTIVATIONAL_QUOTES = MOTIVATIONAL_QUOTES;
+  window.STUDY_PLAN = STUDY_PLAN;
+  window.ACHIEVEMENTS = ACHIEVEMENTS;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    PLAYLISTS: PLAYLISTS,
+    PRACTICE_LINKS: PRACTICE_LINKS,
+    MOTIVATIONAL_QUOTES: MOTIVATIONAL_QUOTES,
+    STUDY_PLAN: STUDY_PLAN,
+    ACHIEVEMENTS: ACHIEVEMENTS
+  };
+}
