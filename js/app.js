@@ -518,28 +518,39 @@
 
     // 3. Subject-Wise Progress Breakdown
     html += '  <div class="card mb-lg">';
-    html += '    <div class="card-header">';
-    html += '      <h2 class="card-title"><i data-lucide="pie-chart"></i> Subject Progress Breakdown</h2>';
+    html += '    <div class="card-header flex-between">';
+    html += '      <div>';
+    html += '        <h2 class="card-title"><i data-lucide="pie-chart"></i> Subject Progress Breakdown</h2>';
+    html += '        <span class="text-xs text-muted">Syllabus completion across Quantitative, Reasoning, Verbal & Coding</span>';
+    html += '      </div>';
+    html += '      <span class="badge badge-primary fw-600">' + stats.overallPercentage + '% Overall</span>';
     html += '    </div>';
     html += '    <div class="subject-progress-grid">';
 
     var cats = [
-      { id: 'quant', label: 'Quantitative Aptitude', done: stats.categoryStats.quant.done, total: stats.categoryStats.quant.total, color: '#6c5ce7' },
-      { id: 'reasoning', label: 'Reasoning Ability', done: stats.categoryStats.reasoning.done, total: stats.categoryStats.reasoning.total, color: '#00cec9' },
-      { id: 'english', label: 'Verbal Ability', done: stats.categoryStats.english.done, total: stats.categoryStats.english.total, color: '#fd79a8' },
-      { id: 'coding', label: 'Hands-on Coding', done: stats.categoryStats.coding.problemsDone, total: Math.max(stats.categoryStats.coding.problemsTotal, 30), color: '#fdcb6e' }
+      { id: 'quant', label: 'Quantitative Aptitude', done: stats.categoryStats.quant.done, total: stats.categoryStats.quant.total, color: '#6c5ce7', icon: 'calculator' },
+      { id: 'reasoning', label: 'Reasoning Ability', done: stats.categoryStats.reasoning.done, total: stats.categoryStats.reasoning.total, color: '#00cec9', icon: 'brain-circuit' },
+      { id: 'english', label: 'Verbal Ability', done: stats.categoryStats.english.done, total: stats.categoryStats.english.total, color: '#fd79a8', icon: 'book-open' },
+      { id: 'coding', label: 'Hands-on Coding', done: stats.categoryStats.coding.problemsDone, total: Math.max(stats.categoryStats.coding.problemsTotal, 30), color: '#fdcb6e', icon: 'code-2' }
     ];
 
     for (var c = 0; c < cats.length; c++) {
       var catItem = cats[c];
       var catPct = catItem.total > 0 ? Math.round((catItem.done / catItem.total) * 100) : 0;
       html += '      <div class="subject-progress-item">';
-      html += '        <div class="flex-between mb-xs text-xs">';
-      html += '          <span class="fw-600">' + catItem.label + '</span>';
-      html += '          <span class="text-muted">' + catItem.done + ' / ' + catItem.total + ' (' + catPct + '%)</span>';
+      html += '        <div class="subject-item-top flex-between mb-sm">';
+      html += '          <div class="subject-item-title-group">';
+      html += '            <div class="subject-icon-box ' + catItem.id + '"><i data-lucide="' + catItem.icon + '"></i></div>';
+      html += '            <span class="subject-item-name fw-600">' + catItem.label + '</span>';
+      html += '          </div>';
+      html += '          <span class="subject-pct-badge fw-700">' + catPct + '%</span>';
       html += '        </div>';
-      html += '        <div class="progress-bar mini-bar">';
+      html += '        <div class="progress-bar mini-bar mb-xs">';
       html += '          <div class="progress-fill" style="width: ' + catPct + '%; background-color: ' + catItem.color + ';"></div>';
+      html += '        </div>';
+      html += '        <div class="flex-between text-xs text-muted mt-xs">';
+      html += '          <span>' + catItem.done + ' of ' + catItem.total + ' completed</span>';
+      html += '          <span class="subject-status-pill ' + (catPct >= 100 ? 'status-complete' : 'status-pending') + '">' + (catPct >= 100 ? 'Mastered' : (catPct > 0 ? 'In Progress' : 'Pending')) + '</span>';
       html += '        </div>';
       html += '      </div>';
     }
@@ -547,32 +558,48 @@
     html += '    </div>';
     html += '  </div>';
 
-    // 4. Today's Plan Summary Card
+    // 4. Today's Plan Summary Card (Balanced 2-Column Responsive Layout)
     html += '  <div class="card mb-lg">';
     html += '    <div class="card-header flex-between">';
     html += '      <h2 class="card-title"><i data-lucide="calendar-check"></i> Today\'s Focus: Day ' + currentDay + '</h2>';
     html += '      <a href="#today" class="btn btn-sm btn-secondary">Open Full Day Plan <i data-lucide="arrow-right"></i></a>';
     html += '    </div>';
-    html += '    <div class="today-summary-box">';
-    html += '      <div class="today-topic-title fw-600">' + escapeHtml(todayPlan.title) + '</div>';
+    html += '    <div class="today-two-col-layout">';
+    html += '      <div class="today-meta-panel">';
+    html += '        <div class="badge badge-primary mb-xs">Day ' + currentDay + ' Core Target</div>';
+    html += '        <h3 class="today-topic-title fw-700 mb-xs">' + escapeHtml(todayPlan.title) + '</h3>';
     if (todayPlan.learningObjectives) {
-      html += '      <div class="today-obj-text text-xs text-muted mt-xs"><i data-lucide="target" class="icon-inline"></i> ' + escapeHtml(todayPlan.learningObjectives) + '</div>';
+      html += '        <div class="today-obj-box mb-md"><i data-lucide="target" class="icon-inline text-accent"></i> ' + escapeHtml(todayPlan.learningObjectives) + '</div>';
     }
+    html += '        <div class="today-estimate-badge text-xs mb-md"><i data-lucide="clock" class="icon-inline"></i> Recommended: 4-5 Hours Dedicated Prep</div>';
+    html += '        <a href="#day/' + currentDay + '" class="btn btn-primary btn-block"><i data-lucide="play-circle"></i> Start Day ' + currentDay + ' Study Plan</a>';
+    html += '      </div>';
 
     var todayTasks = todayPlan.tasks || [];
     var tasksObj = state.data.tasks || {};
-    html += '      <div class="today-tasks-preview-list mt-md">';
+    var doneCountToday = 0;
+    for (var dChk = 0; dChk < todayTasks.length; dChk++) {
+      if (tasksObj[todayTasks[dChk].id]) doneCountToday++;
+    }
+
+    html += '      <div class="today-checklist-panel">';
+    html += '        <div class="flex-between text-xs mb-sm">';
+    html += '          <span class="fw-600 text-muted">Tasks Checklist</span>';
+    html += '          <span class="text-accent fw-600">' + doneCountToday + ' / ' + todayTasks.length + ' Done</span>';
+    html += '        </div>';
+    html += '        <div class="today-tasks-preview-list">';
     for (var t = 0; t < Math.min(todayTasks.length, 5); t++) {
       var tk = todayTasks[t];
       var isDone = !!tasksObj[tk.id];
-      html += '        <div class="mini-task-row flex-between text-xs py-xs ' + (isDone ? 'text-muted strike' : '') + '">';
-      html += '          <span><i data-lucide="' + (isDone ? 'check-circle' : 'circle') + '" class="icon-inline ' + (isDone ? 'text-success' : '') + '"></i> ' + escapeHtml(tk.title) + '</span>';
-      html += '          <span class="badge badge-' + tk.category + '">' + tk.category + '</span>';
-      html += '        </div>';
+      html += '          <div class="mini-task-row flex-between text-xs py-xs ' + (isDone ? 'text-muted strike' : '') + '">';
+      html += '            <span class="mini-task-title"><i data-lucide="' + (isDone ? 'check-circle' : 'circle') + '" class="icon-inline ' + (isDone ? 'text-success' : '') + '"></i> ' + escapeHtml(tk.title) + '</span>';
+      html += '            <span class="badge badge-' + tk.category + '">' + tk.category + '</span>';
+      html += '          </div>';
     }
     if (todayTasks.length > 5) {
-      html += '        <div class="text-xs text-muted mt-xs">+ ' + (todayTasks.length - 5) + ' more practice tasks for today...</div>';
+      html += '          <div class="text-xs text-muted mt-xs text-center"><a href="#day/' + currentDay + '" class="text-accent">+ ' + (todayTasks.length - 5) + ' more practice tasks for today &rarr;</a></div>';
     }
+    html += '        </div>';
     html += '      </div>';
 
     html += '    </div>';
@@ -1119,18 +1146,27 @@
     var noteDays = Object.keys(notesObj).filter(function (k) { return notesObj[k] && notesObj[k].trim().length > 0; });
 
     html += '  <div class="card mb-lg">';
-    html += '    <div class="card-header">';
-    html += '      <h2 class="card-title"><i data-lucide="edit-3"></i> Days with Personal Formula / Error Notes (' + noteDays.length + ')</h2>';
+    html += '    <div class="card-header flex-between">';
+    html += '      <div>';
+    html += '        <h2 class="card-title"><i data-lucide="edit-3"></i> Days with Personal Formula / Error Notes (' + noteDays.length + ')</h2>';
+    html += '        <p class="text-xs text-muted mt-xs">Notebook entries, tricky question shortcuts, and error analysis from daily preparation.</p>';
+    html += '      </div>';
+    html += '      <a href="#today" class="btn btn-xs btn-secondary"><i data-lucide="plus-circle"></i> Add Note</a>';
     html += '    </div>';
     if (noteDays.length === 0) {
-      html += '    <p class="text-xs text-muted">No notes written yet. Open any day study page to record tricky questions or formulas!</p>';
+      html += '    <div class="notes-empty-state">';
+      html += '      <div class="notes-empty-icon"><i data-lucide="file-edit"></i></div>';
+      html += '      <h4 class="notes-empty-title">No Personal Notes or Formulas Recorded Yet</h4>';
+      html += '      <p class="text-xs text-muted">Use the notebook on each day\'s study page to save tricky question shortcuts, formulas, and revision tips.</p>';
+      html += '      <a href="#today" class="btn btn-sm btn-primary mt-sm"><i data-lucide="plus"></i> Open Today\'s Notes</a>';
+      html += '    </div>';
     } else {
-      html += '    <div class="notes-summary-list">';
+      html += '    <div class="notes-summary-grid">';
       for (var n = 0; n < noteDays.length; n++) {
         var dayK = noteDays[n];
-        html += '      <div class="mini-note-item p-sm mb-xs card">';
-        html += '        <div class="flex-between text-xs mb-xs"><strong>Day ' + dayK + ' Notes:</strong><a href="#day/' + dayK + '" class="text-accent">Open Day</a></div>';
-        html += '        <div class="text-xs text-muted truncate">' + escapeHtml(notesObj[dayK]) + '</div>';
+        html += '      <div class="note-summary-card">';
+        html += '        <div class="flex-between text-xs mb-xs"><span class="badge badge-primary">Day ' + dayK + ' Notes</span><a href="#day/' + dayK + '" class="text-accent text-xs">Open Day &rarr;</a></div>';
+        html += '        <div class="text-xs text-muted note-content-preview">' + escapeHtml(notesObj[dayK]) + '</div>';
         html += '      </div>';
       }
       html += '    </div>';
@@ -1146,6 +1182,13 @@
   // ============================================================
 
   function renderAchievements() {
+    // Automatically evaluate all achievements to unlock badges based on current progress
+    if (window.Rewards && typeof window.Rewards.checkAchievements === 'function') {
+      var syncRes = window.Rewards.checkAchievements(state.data);
+      state.data = syncRes.data;
+      window.Storage.save(state.data);
+    }
+
     var achievements = (typeof window.ACHIEVEMENTS !== 'undefined') ? window.ACHIEVEMENTS : [];
     var earned = state.data.earnedAchievements || [];
 
@@ -1300,19 +1343,34 @@
     html += '    </div>';
     html += '  </div>';
 
-    // Data Export & Reset Card
+    // Data Export & Reset Card (Balanced 3-Column Responsive Grid)
     html += '  <div class="card mb-lg">';
     html += '    <div class="card-header">';
     html += '      <h2 class="card-title"><i data-lucide="database"></i> Data Backup & Recovery</h2>';
+    html += '      <p class="text-xs text-muted mt-xs">Backup your completed study tasks, mock test records, notes, and XP progress to a JSON file.</p>';
     html += '    </div>';
-    html += '    <p class="text-xs text-muted mb-md">Backup your completed study tasks, mock test records, notes, and XP progress to a JSON file.</p>';
-    html += '    <div class="flex flex-wrap gap-md">';
-    html += '      <button class="btn btn-secondary" id="btnExportJSON"><i data-lucide="download"></i> Export Progress (JSON)</button>';
-    html += '      <label class="btn btn-secondary" style="margin: 0; cursor: pointer;">';
-    html += '        <i data-lucide="upload"></i> Import Progress';
-    html += '        <input type="file" id="fileImportJSON" accept=".json" style="display: none;">';
-    html += '      </label>';
-    html += '      <button class="btn btn-danger" id="btnResetAllData"><i data-lucide="trash-2"></i> Reset Tracker Data</button>';
+    html += '    <div class="backup-action-grid">';
+    html += '      <div class="backup-action-card">';
+    html += '        <div class="backup-icon-wrap"><i data-lucide="download"></i></div>';
+    html += '        <h4 class="backup-card-title">Export Progress</h4>';
+    html += '        <p class="backup-card-desc">Download your 30-day preparation data, notes, and scores as a JSON file.</p>';
+    html += '        <button class="btn btn-secondary btn-block mt-sm" id="btnExportJSON"><i data-lucide="download"></i> Export JSON</button>';
+    html += '      </div>';
+    html += '      <div class="backup-action-card">';
+    html += '        <div class="backup-icon-wrap"><i data-lucide="upload"></i></div>';
+    html += '        <h4 class="backup-card-title">Import Progress</h4>';
+    html += '        <p class="backup-card-desc">Restore your progress and test history from a previously saved JSON file.</p>';
+    html += '        <label class="btn btn-secondary btn-block mt-sm" style="margin: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">';
+    html += '          <i data-lucide="upload"></i> Import File';
+    html += '          <input type="file" id="fileImportJSON" accept=".json" style="display: none;">';
+    html += '        </label>';
+    html += '      </div>';
+    html += '      <div class="backup-action-card danger-zone">';
+    html += '        <div class="backup-icon-wrap danger"><i data-lucide="trash-2"></i></div>';
+    html += '        <h4 class="backup-card-title">Reset Tracker</h4>';
+    html += '        <p class="backup-card-desc">Permanently wipe local progress, test history, and restart from Day 1.</p>';
+    html += '        <button class="btn btn-danger btn-block mt-sm" id="btnResetAllData"><i data-lucide="trash-2"></i> Reset Data</button>';
+    html += '      </div>';
     html += '    </div>';
     html += '  </div>';
 
@@ -1836,7 +1894,14 @@
     // 1. Load LocalStorage
     state.data = window.Storage.load();
 
-    // 2. Set Theme attribute on <html>
+    // 2. Synchronize achievements with existing completed progress
+    if (window.Rewards && typeof window.Rewards.checkAchievements === 'function') {
+      var syncRes = window.Rewards.checkAchievements(state.data);
+      state.data = syncRes.data;
+      window.Storage.save(state.data);
+    }
+
+    // 3. Set Theme attribute on <html>
     document.documentElement.setAttribute('data-theme', state.data.theme || 'dark');
 
     // 3. Initialize Living Nature Environment Engine

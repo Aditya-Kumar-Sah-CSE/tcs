@@ -1941,24 +1941,70 @@ tbody tr:last-child td {
    23. Living Nature Environment & Glassmorphism Backdrop
    ========================================================== */
 
+/* ==========================================================
+   Background Living Wallpaper 10s Slideshow Container
+   ========================================================== */
+.bg-slideshow {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bg-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 1.8s ease-in-out, transform 10s ease-out;
+  pointer-events: none;
+}
+
+.bg-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 30%, rgba(10, 15, 29, 0.58) 0%, rgba(6, 10, 20, 0.88) 100%);
+  pointer-events: none;
+}
+
+[data-theme="light"] .bg-overlay {
+  background: radial-gradient(circle at 50% 30%, rgba(245, 247, 251, 0.72) 0%, rgba(228, 233, 242, 0.92) 100%);
+}
+
 #natureCanvas {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 0;
-}
-
-/* Ensure app wrapper layers above the natural canvas */
-.app {
-  position: relative;
   z-index: 1;
 }
 
-/* Glassmorphic card styling with natural lighting highlights */
+/* Ensure app wrapper layers above background canvas */
+.app {
+  position: relative;
+  z-index: 2;
+}
+
+/* Glassmorphic card styling with natural lighting highlights & generous padding */
 .card {
+  padding: 1.75rem 2rem;
+  margin-bottom: 1.5rem;
   background: var(--bg-card);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -1973,6 +2019,12 @@ tbody tr:last-child td {
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.38);
 }
 
+.card-header {
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
 /* ==========================================================
    24. Top Global Navigation Bar
    ========================================================== */
@@ -1984,6 +2036,8 @@ tbody tr:last-child td {
   right: 0;
   width: 100%;
   height: 60px;
+  min-height: 60px;
+  max-height: 60px;
   z-index: 100;
   display: flex;
   align-items: center;
@@ -1994,6 +2048,8 @@ tbody tr:last-child td {
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 [data-theme="light"] .top-navbar {
@@ -2091,15 +2147,13 @@ tbody tr:last-child td {
   box-shadow: 0 2px 10px rgba(108, 92, 231, 0.35);
   font-weight: 600;
 }
-  color: #ffffff;
-  background: linear-gradient(135deg, rgba(108, 92, 231, 0.4), rgba(0, 206, 201, 0.25));
-  border: 1px solid rgba(108, 92, 231, 0.4);
-}
 
 .top-nav-actions {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
 }
 
 .day-indicator-pill {
@@ -2114,6 +2168,8 @@ tbody tr:last-child td {
   font-size: 0.78rem;
   font-weight: 600;
   text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: all var(--transition-fast);
 }
 
@@ -2129,8 +2185,10 @@ tbody tr:last-child td {
 .nav-control-btn {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.4rem;
-  padding: 0.4rem 0.7rem;
+  padding: 0 0.75rem;
+  height: 34px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -2138,6 +2196,19 @@ tbody tr:last-child td {
   cursor: pointer;
   font-size: 0.78rem;
   font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+#btnSoundToggle {
+  width: 34px;
+  padding: 0;
+}
+
+.env-nav-label {
+  white-space: nowrap;
+}
   transition: all var(--transition-fast);
 }
 
@@ -2938,25 +3009,29 @@ tbody tr:last-child td {
 
 .search-input-wrapper {
   position: relative;
-  flex: 1;
-  min-width: 260px;
+  display: flex;
+  align-items: center;
+  flex: 1 1 280px;
+  min-width: 240px;
 }
 
-.search-input-wrapper .search-icon {
+.search-input-wrapper .search-icon,
+.search-input-wrapper svg.search-icon {
   position: absolute;
   left: 14px;
   top: 50%;
   transform: translateY(-50%);
-  width: 17px;
-  height: 17px;
+  width: 18px;
+  height: 18px;
   color: var(--text-muted);
   pointer-events: none;
+  z-index: 2;
 }
 
 .search-input-wrapper .search-input {
   width: 100%;
-  height: 40px;
-  padding: 0 14px 0 42px;
+  height: 42px;
+  padding: 0 16px 0 42px !important;
   background: var(--input-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
@@ -2976,17 +3051,23 @@ tbody tr:last-child td {
   align-items: center;
   gap: 0.65rem;
   flex-wrap: wrap;
+  flex: 2 1 auto;
+  justify-content: flex-end;
 }
 
 .filter-selects .select {
-  height: 40px;
-  padding: 0 28px 0 12px;
+  height: 42px;
+  min-width: 130px;
+  padding: 0 30px 0 12px;
   background: var(--input-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   color: var(--text-primary);
   font-size: 0.85rem;
   font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
   cursor: pointer;
   transition: all var(--transition-fast);
 }
@@ -3146,7 +3227,330 @@ tbody tr:last-child td {
   margin-top: 0.5rem;
 }
 
-/* Common Spacing Helpers */
-.mb-6 {
-  margin-bottom: 1.5rem !important;
+/* Common Spacing & Flex Helpers */
+.flex-between {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100%;
+}
+
+.flex-start {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+.flex-center {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.mb-xs { margin-bottom: 0.35rem !important; }
+.mb-sm { margin-bottom: 0.75rem !important; }
+.mb-md { margin-bottom: 1.25rem !important; }
+.mb-lg { margin-bottom: 1.75rem !important; }
+.mb-xl { margin-bottom: 2.5rem !important; }
+.mb-6  { margin-bottom: 1.5rem !important; }
+
+.mt-xs { margin-top: 0.35rem !important; }
+.mt-sm { margin-top: 0.75rem !important; }
+.mt-md { margin-top: 1.25rem !important; }
+.mt-lg { margin-top: 1.75rem !important; }
+.mt-xl { margin-top: 2.5rem !important; }
+
+.py-xs { padding-top: 0.35rem !important; padding-bottom: 0.35rem !important; }
+.py-sm { padding-top: 0.65rem !important; padding-bottom: 0.65rem !important; }
+.px-xs { padding-left: 0.35rem !important; padding-right: 0.35rem !important; }
+.px-sm { padding-left: 0.65rem !important; padding-right: 0.65rem !important; }
+.p-sm  { padding: 0.75rem !important; }
+.p-md  { padding: 1.25rem !important; }
+
+/* ==========================================================
+   33. Subject Progress Breakdown 2x2 Grid
+   ========================================================== */
+.subject-progress-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.subject-progress-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+[data-theme="light"] .subject-progress-item {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.subject-progress-item:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+
+.subject-item-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.subject-item-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.subject-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.subject-icon-box.quant     { background: rgba(108, 92, 231, 0.18); color: #a29bfe; }
+.subject-icon-box.reasoning { background: rgba(0, 206, 201, 0.18); color: #00cec9; }
+.subject-icon-box.english   { background: rgba(253, 121, 168, 0.18); color: #fd79a8; }
+.subject-icon-box.coding    { background: rgba(253, 203, 110, 0.18); color: #fdcb6e; }
+
+.subject-item-name {
+  font-size: 0.92rem;
+  color: var(--text-primary);
+}
+
+.subject-pct-badge {
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.subject-status-pill {
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.subject-status-pill.status-complete {
+  background: rgba(0, 184, 148, 0.15);
+  color: #00cec9;
+}
+
+.subject-status-pill.status-pending {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-muted);
+}
+
+/* ==========================================================
+   34. Today's Plan 2-Column Responsive Box
+   ========================================================== */
+.today-two-col-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+.today-meta-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.4rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+[data-theme="light"] .today-meta-panel {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.today-topic-title {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  line-height: 1.35;
+}
+
+.today-obj-box {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  padding: 0.65rem 0.85rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.today-estimate-badge {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.today-checklist-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.4rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+[data-theme="light"] .today-checklist-panel {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.mini-task-row {
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.02);
+  margin-bottom: 0.4rem;
+  transition: background var(--transition-fast);
+}
+
+.mini-task-row:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mini-task-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ==========================================================
+   35. Data Backup & Recovery 3-Column Action Grid
+   ========================================================== */
+.backup-action-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.backup-action-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.4rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  text-align: center;
+  align-items: center;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+[data-theme="light"] .backup-action-card {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.backup-action-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+
+.backup-action-card.danger-zone:hover {
+  border-color: rgba(214, 48, 49, 0.5);
+}
+
+.backup-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: rgba(108, 92, 231, 0.15);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+}
+
+.backup-icon-wrap.danger {
+  background: rgba(214, 48, 49, 0.15);
+  color: var(--danger);
+}
+
+.backup-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.backup-card-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+/* ==========================================================
+   36. Personal Notes Empty State & Grid
+   ========================================================== */
+.notes-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-md);
+}
+
+.notes-empty-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: rgba(108, 92, 231, 0.12);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.notes-empty-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.notes-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.note-summary-card {
+  padding: 1.15rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.note-content-preview {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.5;
 }

@@ -75,19 +75,21 @@
       data.xp = typeof data.xp === 'number' ? data.xp : 0;
 
       var pts = Number(amount) || 0;
-      if (pts <= 0) return data;
+      var canAddPts = true;
 
       if (taskId) {
         if (data.xpLog.indexOf(taskId) !== -1) {
-          // Already awarded XP for this taskId
-          return data;
+          canAddPts = false;
+        } else {
+          data.xpLog.push(taskId);
         }
-        data.xpLog.push(taskId);
       }
 
-      data.xp += pts;
+      if (canAddPts && pts > 0) {
+        data.xp += pts;
+      }
 
-      // Check achievements after gaining XP
+      // ALWAYS check achievements, even if XP was previously awarded
       var checkResult = this.checkAchievements(data);
       data = checkResult.data;
       data._newAchievements = checkResult.newAchievements;
@@ -172,10 +174,12 @@
       var newAchievements = [];
       var plan = getStudyPlan();
 
-      var completedTaskKeys = Object.keys(data.tasks).filter(function (k) {
+      var completedTaskKeys = Object.keys(data.tasks || {}).filter(function (k) {
         return !!data.tasks[k];
       });
-      var completedTaskCount = completedTaskKeys.length;
+      var codingSolved = Array.isArray(data.codingProblems) ? data.codingProblems.filter(function (p) { return p.status === 'Solved'; }).length : 0;
+      var mockTestsCount = Array.isArray(data.mockTests) ? data.mockTests.length : 0;
+      var completedTaskCount = completedTaskKeys.length + codingSolved + mockTestsCount;
 
       // Calculate solved questions count in quant
       var quantQuestionsSolved = 0;
@@ -374,5 +378,10 @@
     }
   };
 
-  window.Rewards = RewardsEngine;
+  if (typeof window !== 'undefined') {
+    window.Rewards = RewardsEngine;
+  }
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = RewardsEngine;
+  }
 })();

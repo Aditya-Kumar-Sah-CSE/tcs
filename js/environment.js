@@ -38,6 +38,65 @@
   var airplane = null;
   var lightning = { active: false, opacity: 0, nextTime: 0 };
 
+  // Curated Nature & Car Photographic Wallpapers (10s random transition)
+  var BG_WALLPAPERS = [
+    'assets/1825308.webp',
+    'assets/5818236-1920x1440-desktop-hd-cool-car-background-image.jpg',
+    'assets/DAJQu6.webp',
+    'assets/OIP (1).jpeg',
+    'assets/OIP.jpeg',
+    'assets/thumb-1920-683733.png'
+  ];
+
+  var currentWallpaperIndex = 0;
+  var wallpaperTimer = null;
+  var activeSlideKey = 'A'; // 'A' or 'B'
+
+  function initWallpaperSlideshow() {
+    var slideA = document.getElementById('bgSlideA');
+    var slideB = document.getElementById('bgSlideB');
+    if (!slideA || !slideB) return;
+
+    // Pick random initial wallpaper
+    currentWallpaperIndex = Math.floor(Math.random() * BG_WALLPAPERS.length);
+    slideA.style.backgroundImage = 'url("' + BG_WALLPAPERS[currentWallpaperIndex] + '")';
+    slideA.classList.add('active');
+    slideB.classList.remove('active');
+
+    if (wallpaperTimer) {
+      clearInterval(wallpaperTimer);
+    }
+    // Change wallpaper randomly every 10 seconds (10000ms)
+    wallpaperTimer = setInterval(rotateWallpaper, 10000);
+  }
+
+  function rotateWallpaper() {
+    if (!config.animation || !isTabActive) return;
+    var slideA = document.getElementById('bgSlideA');
+    var slideB = document.getElementById('bgSlideB');
+    if (!slideA || !slideB) return;
+
+    var nextIdx;
+    do {
+      nextIdx = Math.floor(Math.random() * BG_WALLPAPERS.length);
+    } while (nextIdx === currentWallpaperIndex && BG_WALLPAPERS.length > 1);
+
+    currentWallpaperIndex = nextIdx;
+    var nextImg = BG_WALLPAPERS[currentWallpaperIndex];
+
+    if (activeSlideKey === 'A') {
+      slideB.style.backgroundImage = 'url("' + nextImg + '")';
+      slideB.classList.add('active');
+      slideA.classList.remove('active');
+      activeSlideKey = 'B';
+    } else {
+      slideA.style.backgroundImage = 'url("' + nextImg + '")';
+      slideA.classList.add('active');
+      slideB.classList.remove('active');
+      activeSlideKey = 'A';
+    }
+  }
+
   // Helper for random in range
   function rand(min, max) {
     return min + Math.random() * (max - min);
@@ -275,49 +334,12 @@
 
   // --- Rendering Layers ---
 
-  // 1. Sky Gradient
+  // 1. Sky Gradient / Background Overlay
   function drawSky(time, season) {
-    var grad = ctx.createLinearGradient(0, 0, 0, height);
-
-    if (season === 'monsoon' || season === 'rain') {
-      grad.addColorStop(0, '#1a2530');
-      grad.addColorStop(0.5, '#243342');
-      grad.addColorStop(1, '#151e27');
-    } else if (time === 'night') {
-      grad.addColorStop(0, '#040711');
-      grad.addColorStop(0.4, '#091322');
-      grad.addColorStop(0.8, '#0f1c30');
-      grad.addColorStop(1, '#16253c');
-    } else if (time === 'morning') {
-      grad.addColorStop(0, '#3a539b');
-      grad.addColorStop(0.4, '#6a89cc');
-      grad.addColorStop(0.75, '#f6b93b');
-      grad.addColorStop(1, '#e55039');
-    } else if (time === 'evening') {
-      grad.addColorStop(0, '#2c143d');
-      grad.addColorStop(0.35, '#6a1b51');
-      grad.addColorStop(0.7, '#c0392b');
-      grad.addColorStop(1, '#e67e22');
-    } else {
-      // Daylight / Summer
-      if (season === 'winter') {
-        grad.addColorStop(0, '#4a5b6d');
-        grad.addColorStop(0.5, '#718294');
-        grad.addColorStop(1, '#b0c4de');
-      } else {
-        grad.addColorStop(0, '#153160');
-        grad.addColorStop(0.45, '#204987');
-        grad.addColorStop(0.85, '#5499c7');
-        grad.addColorStop(1, '#d4e6f1');
-      }
-    }
-
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, width, height);
-
-    // Subtle lightning flash (Monsoon)
+    // Canvas background is kept transparent to let the high-definition nature & car photographic
+    // wallpapers shine through smoothly. Only subtle atmospheric lightning is drawn here.
     if (lightning.active && lightning.opacity > 0) {
-      ctx.fillStyle = 'rgba(210, 230, 255, ' + (lightning.opacity * 0.4) + ')';
+      ctx.fillStyle = 'rgba(210, 230, 255, ' + (lightning.opacity * 0.35) + ')';
       ctx.fillRect(0, 0, width, height);
     }
   }
@@ -386,20 +408,15 @@
     }
   }
 
-  // 3. Realistic Soft Clouds
+  // 3. Subtle Atmospheric Mist / Soft Sky Clouds
   function drawClouds(dt, time, season) {
+    if (!config.animation || config.reducedMotion) return;
     ctx.save();
 
-    // Determine cloud color based on lighting (NEVER harsh opaque white at night!)
-    var cloudColor = 'rgba(255, 255, 255, 0.10)';
+    // Very soft translucent mist high in the sky so cards & headings are never obscured
+    var cloudColor = 'rgba(255, 255, 255, 0.04)';
     if (time === 'night') {
-      cloudColor = 'rgba(25, 40, 65, 0.22)';
-    } else if (time === 'morning') {
-      cloudColor = 'rgba(255, 225, 200, 0.12)';
-    } else if (time === 'evening') {
-      cloudColor = 'rgba(240, 160, 130, 0.14)';
-    } else if (season === 'monsoon') {
-      cloudColor = 'rgba(45, 60, 80, 0.35)';
+      cloudColor = 'rgba(25, 40, 65, 0.08)';
     }
 
     for (var i = 0; i < clouds.length; i++) {
@@ -408,7 +425,7 @@
         c.x += c.speed * dt;
         if (c.x - c.width > width) {
           c.x = -c.width;
-          c.y = rand(15, Math.min(140, height * 0.18));
+          c.y = rand(10, Math.min(80, height * 0.12));
         }
       }
 
@@ -416,96 +433,21 @@
       ctx.beginPath();
       var cx = c.x;
       var cy = c.y;
-      var r = c.height * 0.5;
+      var r = c.height * 0.45;
 
       ctx.arc(cx, cy, r, 0, Math.PI * 2);
       ctx.arc(cx + r * 1.1, cy - r * 0.25, r * 0.8, 0, Math.PI * 2);
       ctx.arc(cx + r * 2.2, cy, r * 0.85, 0, Math.PI * 2);
-      ctx.arc(cx + r * 1.1, cy + r * 0.18, r * 0.75, 0, Math.PI * 2);
       ctx.fill();
     }
 
     ctx.restore();
   }
 
-  // 4. Distant Mountains (kept in lower viewport so text is never obstructed)
+  // 4. Distant Mountains (Replaced by photographic wallpaper slideshow per user preference)
   function drawMountains(season, time) {
-    ctx.save();
-
-    var farColor = '#24334a';
-    var midColor = '#1a2638';
-    var nearColor = '#121c2a';
-
-    if (season === 'winter') {
-      farColor = '#4a5765';
-      midColor = '#37424e';
-      nearColor = '#27313b';
-    } else if (season === 'autumn') {
-      farColor = '#3f2828';
-      midColor = '#301c1c';
-      nearColor = '#241414';
-    } else if (season === 'jungle' || season === 'spring') {
-      farColor = '#1e3d2b';
-      midColor = '#152c1f';
-      nearColor = '#0f2016';
-    }
-
-    if (time === 'night') {
-      farColor = '#070f1a';
-      midColor = '#040911';
-      nearColor = '#020509';
-    }
-
-    // Far mountain range
-    ctx.fillStyle = farColor;
-    ctx.beginPath();
-    ctx.moveTo(0, height);
-    var baseYFar = height * 0.62;
-    ctx.lineTo(0, baseYFar);
-
-    var peaks = [
-      { x: 0.15 * width, y: height * 0.44 },
-      { x: 0.32 * width, y: height * 0.52 },
-      { x: 0.50 * width, y: height * 0.40 },
-      { x: 0.68 * width, y: height * 0.48 },
-      { x: 0.84 * width, y: height * 0.38 },
-      { x: width, y: height * 0.56 }
-    ];
-
-    for (var p = 0; p < peaks.length; p++) {
-      ctx.lineTo(peaks[p].x, peaks[p].y);
-    }
-    ctx.lineTo(width, height);
-    ctx.closePath();
-    ctx.fill();
-
-    // Mid range hills
-    ctx.fillStyle = midColor;
-    ctx.beginPath();
-    ctx.moveTo(0, height);
-    var baseYMid = height * 0.72;
-    ctx.lineTo(0, baseYMid);
-
-    for (var m = 0; m <= 8; m++) {
-      var mx = (m / 8) * width;
-      var my = baseYMid - Math.sin(m * 1.2) * 28;
-      ctx.lineTo(mx, my);
-    }
-    ctx.lineTo(width, height);
-    ctx.closePath();
-    ctx.fill();
-
-    // Near foothills & River
-    ctx.fillStyle = nearColor;
-    ctx.beginPath();
-    ctx.moveTo(0, height);
-    ctx.lineTo(0, height * 0.82);
-    ctx.bezierCurveTo(width * 0.3, height * 0.78, width * 0.6, height * 0.86, width, height * 0.84);
-    ctx.lineTo(width, height);
-    ctx.closePath();
-    ctx.fill();
-
-    ctx.restore();
+    // Disabled so high-definition car and nature wallpapers remain fully visible
+    return;
   }
 
   // 5. Birds in Flight
@@ -778,6 +720,7 @@
 
       ctx = canvas.getContext('2d');
       resize();
+      initWallpaperSlideshow();
       this.start();
     },
 
@@ -847,6 +790,10 @@
         animation: config.animation,
         reducedMotion: config.reducedMotion
       };
+    },
+
+    rotateWallpaper: function () {
+      rotateWallpaper();
     }
   };
 
